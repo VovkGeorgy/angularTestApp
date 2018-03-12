@@ -1,52 +1,92 @@
+<app-navigate></app-navigate>
 <p class="col-md-4">
-  students works!
 </p>
-<div class="col-md-4">
+<div class="col-md-5">
   <ngb-tabset #t="ngbTabset">
     <ngb-tab id="tab-selectbyid1" title="Create">
       <ng-template ngbTabContent>
-          <fieldset [formGroup]="student">
-            <legend>Create student entity</legend>
-            <div class="form-group">
-              <label for="inputStudentFio">Student fio</label>
-              <input type="text" class="form-control" id="inputStudentFio" placeholder="Ivanov I. I." formControlName="fio">
-            </div>
-            <div class="form-group">
-              <label for="inputWorkGroup">Work Group</label>
-              <input type="number" class="form-control" id="inputWorkGroup" placeholder="1-31" formControlName="workGroup">
-            </div>
-            <div class="form-group">
-              <label for="inputYearsOld">Years Old</label>
-              <input type="number" class="form-control" id="inputYearsOld" placeholder="1-99" formControlName="yearsOld">
-            </div>
-            <div class="form-group">
-              <label for="inputTeacherId">Teacher Id</label>
-              <input type="number" class="form-control" id="inputTeacherId" placeholder="" formControlName="teacherId">
-            </div>
-            <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="fieldChecker()" ngbPopover="Entity are added, please check" popoverTitle="Ok!">Submit</button>
-          </fieldset>
+        <fieldset [formGroup]="studentForm">
+          <legend>Create student entity</legend>
+          <div class="form-group">
+            <label for="inputStudentFio">Student fio</label>
+            <input type="text" class="form-control" id="inputStudentFio" placeholder="Ivanov I. I."
+                   formControlName="fio">
+          </div>
+          <div class="form-group">
+            <label for="inputWorkGroup">Work Group</label>
+            <input type="number" class="form-control" id="inputWorkGroup" placeholder="1-31"
+                   formControlName="workGroup">
+          </div>
+          <div class="form-group">
+            <label for="inputYearsOld">Years Old</label>
+            <input type="number" class="form-control" id="inputYearsOld" placeholder="1-99" formControlName="yearsOld">
+          </div>
+          <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="pushEntityToBase()"
+                  ngbPopover="Entity are added, please check" popoverTitle="Ok!">Submit
+          </button>
+        </fieldset>
       </ng-template>
     </ngb-tab>
 
     <ngb-tab id="tab-selectbyid2" title="Read">
       <ng-template ngbTabContent>
-        <ul>
-          <li *ngFor="let student of students | async">
-            {{student.fio}}
-          </li>
-        </ul>
+        <div style="float: left">
+          <ul>
+            <li *ngFor="let student of students | async">
+              {{student.fio}}
+            </li>
+          </ul>
+        </div>
+        <div style="float: left">
+          <ul>
+            <li *ngFor="let student of students | async">
+              {{student.workGroup}}
+            </li>
+          </ul>
+        </div>
       </ng-template>
     </ngb-tab>
 
     <ngb-tab id="tab-selectbyid3" title="UpDate">
       <ng-template ngbTabContent>
-        <!--...-->
+        <div>
+          <ul>
+            <li *ngFor="let student of students | async" (click)="openUpdaterFields(student)">
+              {{student.fio}}
+            </li>
+          </ul>
+        </div>
+
+        <fieldset [formGroup]="studentForm" [hidden]="updateFieldIsHidden">
+          <legend>Update student entity</legend>
+          <div class="form-group">
+            <label for="inputStudentFioUpd">Student fio</label>
+            <input type="text" class="form-control" id="inputStudentFioUpd" formControlName="fio">
+          </div>
+          <div class="form-group">
+            <label for="inputWorkGroupUpd">Work Group</label>
+            <input type="number" class="form-control" id="inputWorkGroupUpd" formControlName="workGroup">
+          </div>
+          <div class="form-group">
+            <label for="inputYearsOldUpd">Years Old</label>
+            <input type="number" class="form-control" id="inputYearsOldUpd" formControlName="yearsOld">
+          </div>
+          <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="updateEntityInBase()"
+                  ngbPopover="Entity are updated, please check" popoverTitle="Ok!">Update
+          </button>
+        </fieldset>
       </ng-template>
     </ngb-tab>
 
     <ngb-tab id="tab-selectbyid4" title="Delete">
       <ng-template ngbTabContent>
-        <!--...-->
+        <div>
+          <ul>
+            <li *ngFor="let student of students | async" (click)="openUpdaterFields(student)">
+              {{student.fio}}
+            </li>
+          </ul>
+        </div>
       </ng-template>
     </ngb-tab>
 

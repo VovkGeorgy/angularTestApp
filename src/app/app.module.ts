@@ -11,6 +11,7 @@ import {StudentsComponent} from './students/students.component';
 import {NavigateComponent} from './navigate/navigate.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { TeachersComponent } from './teachers/teachers.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     StudentsComponent,
     NavigateComponent,
     NotFoundComponent,
+    TeachersComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     RouterModule.forRoot([
       {path: '', component: NavigateComponent},
       {path: 'students', component: StudentsComponent},
+      {path: 'teachers', component: TeachersComponent},
       {path: '**', component: NotFoundComponent},
     ]),
     ReactiveFormsModule
