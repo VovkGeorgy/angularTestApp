@@ -12,6 +12,8 @@ import {NavigateComponent} from './navigate/navigate.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { TeachersComponent } from './teachers/teachers.component';
+import {DataService} from './data.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -33,9 +35,10 @@ import { TeachersComponent } from './teachers/teachers.component';
       {path: 'teachers', component: TeachersComponent},
       {path: '**', component: NotFoundComponent},
     ]),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

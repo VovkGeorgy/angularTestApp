@@ -5,48 +5,129 @@
   <ngb-tabset #t="ngbTabset">
     <ngb-tab id="tab-selectbyid1" title="Create">
       <ng-template ngbTabContent>
-        <fieldset [formGroup]="teacher">
+        <fieldset [formGroup]="teacherForm">
           <legend>Create teacher entity</legend>
           <div class="form-group">
             <label for="inputTeacherFio">Teacher fio</label>
-            <input type="text" class="form-control" id="inputTeacherFio" placeholder="Ivanov I. I." formControlName="fio">
+            <input type="text" class="form-control" id="inputTeacherFio" placeholder="Ivanov I. I."
+                   formControlName="fio">
           </div>
           <div class="form-group">
             <label for="inputExperience">Experience</label>
-            <input type="number" class="form-control" id="inputExperience" placeholder="1-99" formControlName="experience">
+            <input type="number" class="form-control" id="inputExperience" placeholder="1-99"
+                   formControlName="experience">
           </div>
           <div class="form-group">
             <label for="inputStudentsNumber">Students Number</label>
-            <input type="number" class="form-control" id="inputStudentsNumber" placeholder="1-99" formControlName="studentsNumber">
+            <input type="number" class="form-control" id="inputStudentsNumber" placeholder="1-99"
+                   formControlName="studentsNumber">
           </div>
-          <div class="form-group">
-            <label for="inputCarId">Car Id</label>
-            <input type="number" class="form-control" id="inputCarId" placeholder="" formControlName="carId">
-          </div>
-          <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="fieldChecker()" ngbPopover="Entity are added, please check" popoverTitle="Ok!">Submit</button>
+          <!--<div class="form-group">-->
+          <!--<label for="inputCarId">Car Id</label>-->
+          <!--<input type="number" class="form-control" id="inputCarId" placeholder="" formControlName="carId">-->
+          <!--</div>-->
+          <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="fieldChecker()"
+                  ngbPopover="Entity are added, please check" popoverTitle="Ok!">Submit
+          </button>
         </fieldset>
       </ng-template>
     </ngb-tab>
 
     <ngb-tab id="tab-selectbyid2" title="Read">
       <ng-template ngbTabContent>
-        <ul>
-          <li *ngFor="let teacher of teachers | async">
-            {{teacher.fio}}
-          </li>
-        </ul>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>fio</th>
+            <th>experience</th>
+            <th>studentsNumber</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let teacher of teachers | async">
+            <td>{{teacher.fio}}</td>
+            <td>{{teacher.experience}}</td>
+            <td>{{teacher.studentsNumber}}</td>
+          </tr>
+          </tbody>
+        </table>
       </ng-template>
     </ngb-tab>
 
     <ngb-tab id="tab-selectbyid3" title="UpDate">
       <ng-template ngbTabContent>
-        <!--...-->
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>fio</th>
+            <th>experience</th>
+            <th>studentsNumber</th>
+            <th>Function</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let teacher of teachers | async">
+            <td>{{teacher.fio}}</td>
+            <td>{{teacher.experience}}</td>
+            <td>{{teacher.studentsNumber}}</td>
+            <td>
+              <button class="btn btn-primary btn-outline-secondary" (click)="loadUpdatedFields(teacher)">Update
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <fieldset [formGroup]="teacherForm">
+          <legend>Create teacher entity</legend>
+          <div class="form-group">
+            <label for="updateTeacherFio">Teacher fio</label>
+            <input type="text" class="form-control" id="updateTeacherFio" placeholder="Ivanov I. I."
+                   formControlName="fio">
+          </div>
+          <div class="form-group">
+            <label for="updateExperience">Experience</label>
+            <input type="number" class="form-control" id="updateExperience" placeholder="1-99"
+                   formControlName="experience">
+          </div>
+          <div class="form-group">
+            <label for="updateStudentsNumber">Students Number</label>
+            <input type="number" class="form-control" id="updateStudentsNumber" placeholder="1-99"
+                   formControlName="studentsNumber">
+          </div>
+          <!--<div class="form-group">-->
+          <!--<label for="updateCarId">Car Id</label>-->
+          <!--<input type="number" class="form-control" id="updateCarId" placeholder="" formControlName="carId">-->
+          <!--</div>-->
+          <button class="btn btn-primary btn-outline-secondary" (click)="updateEntity()">Update
+          </button>
+        </fieldset>
       </ng-template>
     </ngb-tab>
 
     <ngb-tab id="tab-selectbyid4" title="Delete">
       <ng-template ngbTabContent>
-        <!--...-->
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>fio</th>
+            <th>experience</th>
+            <th>studentsNumber</th>
+            <th>Function</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let teacher of teachers | async">
+            <td>{{teacher.fio}}</td>
+            <td>{{teacher.experience}}</td>
+            <td>{{teacher.studentsNumber}}</td>
+            <td>
+              <button class="btn btn-primary btn-outline-secondary" placement="right"
+                      (click)="deleteEntity(teacher.$key)">Delete
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </ng-template>
     </ngb-tab>
 

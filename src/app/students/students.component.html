@@ -21,7 +21,7 @@
             <label for="inputYearsOld">Years Old</label>
             <input type="number" class="form-control" id="inputYearsOld" placeholder="1-99" formControlName="yearsOld">
           </div>
-          <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="pushEntityToBase()"
+          <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="prop()"
                   ngbPopover="Entity are added, please check" popoverTitle="Ok!">Submit
           </button>
         </fieldset>
@@ -30,20 +30,24 @@
 
     <ngb-tab id="tab-selectbyid2" title="Read">
       <ng-template ngbTabContent>
-        <div style="float: left">
-          <ul>
-            <li *ngFor="let student of students | async">
-              {{student.fio}}
-            </li>
-          </ul>
-        </div>
-        <div style="float: left">
-          <ul>
-            <li *ngFor="let student of students | async">
-              {{student.workGroup}}
-            </li>
-          </ul>
-        </div>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>fio</th>
+            <th>work group</th>
+            <th>yearsOld</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let student of students | async">
+            <td>{{student.studentId}}</td>
+            <td>{{student.fio}}</td>
+            <td>{{student.workGroup}}</td>
+            <td>{{student.yearsOld}}</td>
+          </tr>
+          </tbody>
+        </table>
       </ng-template>
     </ngb-tab>
 
@@ -51,7 +55,7 @@
       <ng-template ngbTabContent>
         <div>
           <ul>
-            <li *ngFor="let student of students | async" (click)="openUpdaterFields(student)">
+            <li *ngFor="let student of students | async" (click)="loadUpdatedFields(student)">
               {{student.fio}}
             </li>
           </ul>
@@ -71,7 +75,7 @@
             <label for="inputYearsOldUpd">Years Old</label>
             <input type="number" class="form-control" id="inputYearsOldUpd" formControlName="yearsOld">
           </div>
-          <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="updateEntityInBase()"
+          <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="prop()"
                   ngbPopover="Entity are updated, please check" popoverTitle="Ok!">Update
           </button>
         </fieldset>
@@ -82,7 +86,7 @@
       <ng-template ngbTabContent>
         <div>
           <ul>
-            <li *ngFor="let student of students | async" (click)="openUpdaterFields(student)">
+            <li *ngFor="let student of students | async" (click)="loadUpdatedFields(student)">
               {{student.fio}}
             </li>
           </ul>
