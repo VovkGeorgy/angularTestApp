@@ -14,6 +14,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { TeachersComponent } from './teachers/teachers.component';
 import {DataService} from './data.service';
 import {HttpClientModule} from '@angular/common/http';
+import { LoginLogoutComponent } from './login-logout/login-logout.component';
+import { CarsComponent } from './cars/cars.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import {HttpClientModule} from '@angular/common/http';
     NavigateComponent,
     NotFoundComponent,
     TeachersComponent,
+    LoginLogoutComponent,
+    CarsComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,8 @@ import {HttpClientModule} from '@angular/common/http';
       {path: '', component: NavigateComponent},
       {path: 'students', component: StudentsComponent},
       {path: 'teachers', component: TeachersComponent},
+      {path: 'login', component: LoginLogoutComponent},
+      {path: 'cars', component: CarsComponent},
       {path: '**', component: NotFoundComponent},
     ]),
     ReactiveFormsModule,

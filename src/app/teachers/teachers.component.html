@@ -1,7 +1,7 @@
 <app-navigate></app-navigate>
-<p class="col-md-4">
+<p class="col-md-6">
 </p>
-<div class="col-md-4">
+<div class="col-md-6">
   <ngb-tabset #t="ngbTabset">
     <ngb-tab id="tab-selectbyid1" title="Create">
       <ng-template ngbTabContent>
@@ -22,10 +22,6 @@
             <input type="number" class="form-control" id="inputStudentsNumber" placeholder="1-99"
                    formControlName="studentsNumber">
           </div>
-          <!--<div class="form-group">-->
-          <!--<label for="inputCarId">Car Id</label>-->
-          <!--<input type="number" class="form-control" id="inputCarId" placeholder="" formControlName="carId">-->
-          <!--</div>-->
           <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="fieldChecker()"
                   ngbPopover="Entity are added, please check" popoverTitle="Ok!">Submit
           </button>
@@ -94,10 +90,6 @@
             <input type="number" class="form-control" id="updateStudentsNumber" placeholder="1-99"
                    formControlName="studentsNumber">
           </div>
-          <!--<div class="form-group">-->
-          <!--<label for="updateCarId">Car Id</label>-->
-          <!--<input type="number" class="form-control" id="updateCarId" placeholder="" formControlName="carId">-->
-          <!--</div>-->
           <button class="btn btn-primary btn-outline-secondary" (click)="updateEntity()">Update
           </button>
         </fieldset>

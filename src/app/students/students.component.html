@@ -40,7 +40,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let student of students | async">
+          <tr *ngFor="let student of students">
             <td>{{student.studentId}}</td>
             <td>{{student.fio}}</td>
             <td>{{student.workGroup}}</td>
@@ -55,7 +55,7 @@
       <ng-template ngbTabContent>
         <div>
           <ul>
-            <li *ngFor="let student of students | async" (click)="loadUpdatedFields(student)">
+            <li *ngFor="let student of students" (click)="loadUpdatedFields(student)">
               {{student.fio}}
             </li>
           </ul>

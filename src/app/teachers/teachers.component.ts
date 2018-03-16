@@ -9,17 +9,17 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class TeachersComponent implements OnInit {
   teachers: FirebaseListObservable<any[]>;
-  updateFieldIsHidden: boolean = true;
+  updateFieldIsHidden = true;
   tempTeacherKey: any;
   teacherForm: FormGroup = new FormGroup({
     fio: new FormControl(''),
     experience: new FormControl(''),
     studentsNumber: new FormControl(''),
-    // carId: new FormControl(''),
   });
 
   constructor(private db: AngularFireDatabase) {
     this.teachers = db.list('/teachers');
+    console.log(this.teachers.subscribe());
   }
 
   ngOnInit() {

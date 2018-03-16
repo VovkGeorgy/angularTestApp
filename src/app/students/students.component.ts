@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {DataService} from '../data.service';
-import {Student} from './student';
 
 @Component({
   selector: 'app-students',
@@ -10,7 +9,7 @@ import {Student} from './student';
 })
 export class StudentsComponent implements OnInit {
   updateFieldIsHidden = true;
-  students: Student;
+  students: any[any];
   tempStudentKey: any;
   studentForm: FormGroup = new FormGroup({
     fio: new FormControl(''),
@@ -19,14 +18,11 @@ export class StudentsComponent implements OnInit {
   });
 
   constructor(private dataService: DataService) {
+    console.log(this.dataService.getData());
     this.dataService.getData()
-      .subscribe(data => this.students = {
-        studentId: data['studentId'],
-        fio: data['fio'],
-        workGroup: data['workGroup'],
-        yearsOld: data['yearsOld']
-      })
-    ;
+      .subscribe(students => {
+        this.students = students;
+      });
   }
 
   ngOnInit() {
@@ -35,30 +31,31 @@ export class StudentsComponent implements OnInit {
   prop() {
   }
 
-  // pushEntityToBase() {
-  //   this.students.push(this.studentForm.getRawValue());
-  //   this.studentForm.reset();
-  // }
-  //
+  addEntityToBase() {
+    this.students.push(this.studentForm.getRawValue());
+    this.studentForm.reset();
+  }
+
   loadUpdatedFields(student) {
     this.updateFieldIsHidden = false;
     this.studentForm.setValue(student);
     this.tempStudentKey = student.$key;
   }
+
   //
   // updateEntityInBase() {
   //   this.db.object('/students/' + this.tempStudentKey)
   //     .set(this.studentForm.getRawValue());
   // }
 
-  showData() {
-    this.dataService.getData()
-      .subscribe(data => this.students = {
-        studentId: data['studentId'],
-        fio: data['fio'],
-        workGroup: data['workGroup'],
-        yearsOld: data['yearsOld']
-      })
-    ;
-  }
+  // showData() {
+  //   this.dataService.getData()
+  //     .subscribe(data => this.students = {
+  //       studentId: data['studentId'],
+  //       fio: data['fio'],
+  //       workGroup: data['workGroup'],
+  //       yearsOld: data['yearsOld']
+  //     })
+  //   ;
+  // }
 }
