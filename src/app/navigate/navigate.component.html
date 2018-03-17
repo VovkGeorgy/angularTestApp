@@ -1,8 +1,11 @@
 <p class="col-md-4">
   Choose your <s>destiny</s> entity
 </p>
-<div class="btn-group col-md-5">
-  <button type="button" class="btn btn-dark" routerLink="/students">Students</button>
-  <button type="button" class="btn btn-dark" routerLink="/teachers">Teachers</button>
-  <button type="button" class="btn btn-dark" routerLink="/cars">Cars</button>
+<div class="btn-group col-md-10">
+  <button type="button" class="btn btn-dark" routerLink="/students">{{'student.naming' | translate}}</button>
+  <button type="button" class="btn btn-dark" routerLink="/teachers">{{'teacher.naming' | translate}}</button>
+  <button type="button" class="btn btn-dark" routerLink="/cars">{{'car.naming' | translate}}</button>
 </div>
+<button type="button" class="btn btn-dark" routerLink="/login">{{'button.login' | translate}}</button>
+<button type="button" class="btn btn-dark" (click)="changeLanguage('ru')">RU</button>
+<button type="button" class="btn btn-dark" (click)="changeLanguage('en')">EN</button>

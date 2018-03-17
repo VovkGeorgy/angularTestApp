@@ -11,11 +11,13 @@ import {StudentsComponent} from './students/students.component';
 import {NavigateComponent} from './navigate/navigate.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { TeachersComponent } from './teachers/teachers.component';
+import {TeachersComponent} from './teachers/teachers.component';
 import {DataService} from './data.service';
-import {HttpClientModule} from '@angular/common/http';
-import { LoginLogoutComponent } from './login-logout/login-logout.component';
-import { CarsComponent } from './cars/cars.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {LoginLogoutComponent} from './login-logout/login-logout.component';
+import {CarsComponent} from './cars/cars.component';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 
 @NgModule({
@@ -42,10 +44,22 @@ import { CarsComponent } from './cars/cars.component';
       {path: '**', component: NotFoundComponent},
     ]),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+}
+
+// required for AOT (ahead of time) compilation
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }

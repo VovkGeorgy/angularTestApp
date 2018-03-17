@@ -1,0 +1,21 @@
+{
+  "button.add": "Добавить",
+
+  "main.title": "Агнуляр приложение {{title}}",
+  "main.text": "Тут может быть текст на разных языках",
+
+  "student.title": "Создать запись Студент",
+  "student.fio": "Фио",
+  "student.workGroup": "Группа",
+  "student.yearsOld": "Возраст",
+
+  "teacher.title": "Создать запись Учитель",
+  "teacher.fio": "Фио",
+  "teacher.experience": "Опыт",
+  "teacher.studentsNumber": "Число студентов",
+
+  "tabs.create": "Создать",
+  "tabs.read": "Читать",
+  "tabs.update": "Обновить",
+  "tabs.delete": "Удалить"
+}

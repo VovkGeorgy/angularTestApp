@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navigate',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private translate: TranslateService) {
+  }
 
   ngOnInit() {
   }
 
+  changeLanguage(language: string) {
+    this.translate.use(language);
+  }
 }

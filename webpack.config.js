@@ -8,8 +8,8 @@ module.exports = {
     'polyfills': './src/polyfills.ts',
     'app': './src/main.ts'
   },
-  output:{
-    path: path.resolve(__dirname, 'dist'),     // путь к каталогу выходных файлов - папка public
+  output: {
+    path: path.resolve(__dirname, '../../Idea_projects/SpringSecurityProject/src/main/webapp/'),     // путь к каталогу выходных файлов - папка public
     publicPath: '/',
     filename: '[name].[hash].js'
   },
@@ -19,31 +19,54 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js']
   },
-  module:{
-    rules:[   //загрузчик для ts
+  module: {
+    rules: [   //загрузчик для ts
       {
         test: /\.ts$/, // определяем тип файлов
         use: [
           {
             loader: 'awesome-typescript-loader',
-            options: { configFileName: path.resolve(__dirname, 'tsconfig.json') }
-          } ,
+            options: {configFileName: path.resolve(__dirname, 'tsconfig.json')}
+          },
           'angular2-template-loader'
         ]
       }, {
         test: /\.html$/,
         loader: 'html-loader'
-      },{
+      }, {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
         loader: 'file-loader?name=assets/[name].[hash].[ext]'
-      },{
+      }, {
         test: /\.css$/,
         exclude: path.resolve(__dirname, 'src/app'),
-        use: ExtractTextPlugin.extract({ fallback: "style-loader", use: "css-loader"})
-      },{
+        use: ExtractTextPlugin.extract({fallback: "style-loader", use: "css-loader"})
+      }, {
         test: /\.css$/,
         include: path.resolve(__dirname, 'src/app'),
         loader: 'raw-loader'
+      }, {
+        test: /\.(scss)$/,
+        use: [{
+          loader: 'style-loader', // inject CSS to page
+        }, {
+          loader: 'css-loader', // translates CSS into CommonJS modules
+        }, {
+          loader: 'postcss-loader', // Run post css actions
+          options: {
+            plugins: function () { // post css plugins, can be exported to postcss.config.js
+              return [
+                require('precss'),
+                require('autoprefixer')
+              ];
+            }
+          }
+        }, {
+          loader: 'sass-loader' // compiles Sass to CSS
+        }]
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
