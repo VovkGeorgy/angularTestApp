@@ -1,21 +1,45 @@
 {
-  "button.add": "Добавить",
-
-  "main.title": "Агнуляр приложение {{title}}",
-  "main.text": "Тут может быть текст на разных языках",
-
-  "student.title": "Создать запись Студент",
-  "student.fio": "Фио",
-  "student.workGroup": "Группа",
-  "student.yearsOld": "Возраст",
-
-  "teacher.title": "Создать запись Учитель",
-  "teacher.fio": "Фио",
-  "teacher.experience": "Опыт",
-  "teacher.studentsNumber": "Число студентов",
-
-  "tabs.create": "Создать",
-  "tabs.read": "Читать",
-  "tabs.update": "Обновить",
-  "tabs.delete": "Удалить"
+  "button": {
+    "function": "Действие",
+    "add": "Добавить",
+    "delete": "Удалить",
+    "login": "Логин",
+    "update": "Обновить"
+  },
+  "login-logout": {
+    "title": "Фаорма для входа ",
+    "login": "Логин",
+    "password": "Пароль"
+  },
+  "main": {
+    "title": "Агнуляр приложение {{title}}",
+    "text": "Тут может быть текст на разных языках"
+  },
+  "student": {
+    "naming": "Студент",
+    "title": "Создать запись о студенте",
+    "fio": "Фио",
+    "workGroup": "Группа",
+    "yearsOld": "Возраст"
+  },
+  "teacher": {
+    "naming": "Преподаватель",
+    "title": "Создать запись о учителе",
+    "fio": "Фио",
+    "experience": "Опыт",
+    "studentsNumber": "Число студентов"
+  },
+  "car": {
+    "naming": "Машина",
+    "title": "Создать запись о машине",
+    "mark": "Марка",
+    "mileage": "Пробег",
+    "regNum": "Регистрационный номер"
+  },
+  "tabs": {
+    "create": "Создать",
+    "read": "Читать",
+    "update": "Обновить",
+    "delete": "Удалить"
+  }
 }

@@ -3,7 +3,8 @@
     "function": "Function",
     "add": "Add",
     "delete": "Delete",
-    "login": "Login"
+    "login": "Login",
+    "update": "Update"
   },
   "login-logout": {
     "title": "Login form",
