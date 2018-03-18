@@ -3,13 +3,15 @@ var webpack = require('webpack');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin'); // плагин минимизации
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
-    'app': './src/main.ts'
+    'app': './src/main.ts',
+    'vendor': './src/vendor.ts'
   },
   output: {
-    path: path.resolve(__dirname, '../../Idea_projects/SpringSecurityProject/src/main/webapp/'),     // путь к каталогу выходных файлов - папка public
+    path: path.resolve(__dirname, 'dist'),     // путь к каталогу выходных файлов - папка public
     publicPath: '/',
     filename: '[name].[hash].js'
   },
@@ -30,7 +32,8 @@ module.exports = {
           },
           'angular2-template-loader'
         ]
-      }, {
+      },
+      {
         test: /\.html$/,
         loader: 'html-loader'
       }, {
@@ -44,30 +47,12 @@ module.exports = {
         test: /\.css$/,
         include: path.resolve(__dirname, 'src/app'),
         loader: 'raw-loader'
-      }, {
-        test: /\.(scss)$/,
-        use: [{
-          loader: 'style-loader', // inject CSS to page
-        }, {
-          loader: 'css-loader', // translates CSS into CommonJS modules
-        }, {
-          loader: 'postcss-loader', // Run post css actions
-          options: {
-            plugins: function () { // post css plugins, can be exported to postcss.config.js
-              return [
-                require('precss'),
-                require('autoprefixer')
-              ];
-            }
-          }
-        }, {
-          loader: 'sass-loader' // compiles Sass to CSS
-        }]
       },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
+    ],
+    loaders: [
+      {test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass']},
+      {test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000'},
+      {test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery'}
     ]
   },
   plugins: [
@@ -89,6 +74,17 @@ module.exports = {
       htmlLoader: {
         minimize: false
       }
-    })
+    }),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: "src/assets/i18n",
+        to: 'assets/i18n'
+      }
+    ])
   ]
-}
+};

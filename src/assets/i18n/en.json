@@ -35,12 +35,14 @@
     "mark": "Mark",
     "mileage": "Mileage",
     "regNum": "Reg number"
-
   },
   "tabs": {
     "create": "Create",
     "read": "Read",
     "update": "Update",
     "delete": "Delete"
+  },
+  "navigate": {
+    "title": "Choose entity type"
   }
 }

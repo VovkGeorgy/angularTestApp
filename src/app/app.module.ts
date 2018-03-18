@@ -18,6 +18,7 @@ import {LoginLogoutComponent} from './login-logout/login-logout.component';
 import {CarsComponent} from './cars/cars.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HomeComponent} from './home/home.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     TeachersComponent,
     LoginLogoutComponent,
     CarsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     AngularFireDatabaseModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      {path: '', component: NavigateComponent},
+      {path: '', component: HomeComponent},
       {path: 'students', component: StudentsComponent},
       {path: 'teachers', component: TeachersComponent},
       {path: 'login', component: LoginLogoutComponent},
