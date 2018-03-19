@@ -8,9 +8,7 @@ import '@angular/router';
 
 import '@ngx-translate/core';
 import '@ngx-translate/http-loader';
-import 'jquery';
-import 'bootstrap';
-import 'bootstrap-loader';
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'jquery';
+// import 'bootstrap';
+// import 'bootstrap-loader';
 import 'bootstrap/dist/css/bootstrap.min.css';
-

@@ -11,7 +11,7 @@ module.exports = {
     'vendor': './src/vendor.ts'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),     // путь к каталогу выходных файлов - папка public
+    path: path.resolve(__dirname, '../'),     // путь к каталогу выходных файлов - папка public
     publicPath: '/',
     filename: '[name].[hash].js'
   },
@@ -47,12 +47,7 @@ module.exports = {
         test: /\.css$/,
         include: path.resolve(__dirname, 'src/app'),
         loader: 'raw-loader'
-      },
-    ],
-    loaders: [
-      {test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass']},
-      {test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000'},
-      {test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery'}
+      }
     ]
   },
   plugins: [
