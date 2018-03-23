@@ -68,14 +68,14 @@
               <td>{{teacher.experience}}</td>
               <td>{{teacher.studentsNumber}}</td>
               <td>
-                <button class="btn btn-primary btn-outline-secondary" (click)="loadUpdatedFields(teacher)">Update
+                <button class="btn btn-primary btn-outline-secondary" (click)="loadUpdatedFields(teacher)">{{'button.update' | translate}}
                 </button>
               </td>
             </tr>
             </tbody>
           </table>
           <fieldset [formGroup]="teacherForm">
-            <legend>Create teacher entity</legend>
+            <legend></legend>
             <div class="form-group">
               <label for="updateTeacherFio">{{'teacher.fio' | translate}}</label>
               <input type="text" class="form-control" id="updateTeacherFio" placeholder="Ivanov I. I."

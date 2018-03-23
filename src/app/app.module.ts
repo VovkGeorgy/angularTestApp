@@ -44,6 +44,7 @@ import {HomeComponent} from './home/home.component';
       {path: 'login', component: LoginLogoutComponent},
       {path: 'cars', component: CarsComponent},
       {path: '**', component: NotFoundComponent},
+      //redirection: '/home....'; pathMatch: 'Full'
     ]),
     ReactiveFormsModule,
     HttpClientModule,

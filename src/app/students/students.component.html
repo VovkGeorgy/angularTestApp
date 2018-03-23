@@ -3,98 +3,137 @@
 <div class="row col-md-12">
   <div class="col-md-3"></div>
   <div class="col-md-6">
-  <ngb-tabset #t="ngbTabset">
-    <ngb-tab id="tab-selectbyid1" title="{{'tabs.create' | translate}}">
-      <ng-template ngbTabContent>
-        <fieldset [formGroup]="studentForm">
-          <legend>{{'student.title' | translate}}</legend>
-          <div class="form-group">
-            <label for="inputStudentFio">{{'student.fio' | translate}}</label>
-            <input type="text" class="form-control" id="inputStudentFio" placeholder="Ivanov I. I."
-                   formControlName="fio">
-          </div>
-          <div class="form-group">
-            <label for="inputWorkGroup">{{'student.workGroup' | translate}}</label>
-            <input type="number" class="form-control" id="inputWorkGroup" placeholder="1-31"
-                   formControlName="workGroup">
-          </div>
-          <div class="form-group">
-            <label for="inputYearsOld">{{'student.yearsOld' | translate}}</label>
-            <input type="number" class="form-control" id="inputYearsOld" placeholder="1-99" formControlName="yearsOld">
-          </div>
-          <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="prop()"
-                  ngbPopover="Entity are added, please check" popoverTitle="Ok!">{{'button.add' | translate}}
+    <ngb-tabset #t="ngbTabset">
+      <ngb-tab id="tab-selectbyid1" title="{{'tabs.create' | translate}}">
+        <ng-template ngbTabContent>
+          <fieldset [formGroup]="studentForm">
+            <legend>{{'student.title' | translate}}</legend>
+            <div class="form-group">
+              <label for="inputStudentFio">{{'student.fio' | translate}}</label>
+              <input type="text" class="form-control" id="inputStudentFio" placeholder="Ivanov I. I."
+                     formControlName="fio">
+            </div>
+            <div class="form-group">
+              <label for="inputWorkGroup">{{'student.workGroup' | translate}}</label>
+              <input type="number" class="form-control" id="inputWorkGroup" placeholder="1-31"
+                     formControlName="workGroup">
+            </div>
+            <div class="form-group">
+              <label for="inputYearsOld">{{'student.yearsOld' | translate}}</label>
+              <input type="number" class="form-control" id="inputYearsOld" placeholder="1-99"
+                     formControlName="yearsOld">
+            </div>
+            <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="addEntityToBase()"
+                    ngbPopover="Entity are added, please check" popoverTitle="Ok!">{{'button.add' | translate}}
+            </button>
+          </fieldset>
+        </ng-template>
+      </ngb-tab>
+
+      <ngb-tab id="tab-selectbyid2" title="{{'tabs.read' | translate}}">
+        <ng-template ngbTabContent>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Id</th>
+              <th>{{'student.fio' | translate}}</th>
+              <th>{{'student.workGroup' | translate}}</th>
+              <th>{{'student.yearsOld' | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let student of students">
+              <td>{{student.studentId}}</td>
+              <td>{{student.fio}}</td>
+              <td>{{student.workGroup}}</td>
+              <td>{{student.yearsOld}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="updateReadForm()"
+                  ngbPopover="" popoverTitle="Ok!">{{'button.update' | translate}}
           </button>
-        </fieldset>
-      </ng-template>
-    </ngb-tab>
+        </ng-template>
+      </ngb-tab>
 
-    <ngb-tab id="tab-selectbyid2" title="{{'tabs.read' | translate}}">
-      <ng-template ngbTabContent>
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th>Id</th>
-            <th>{{'student.fio' | translate}}</th>
-            <th>{{'student.workGroup' | translate}}</th>
-            <th>{{'student.yearsOld' | translate}}</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let student of students">
-            <td>{{student.studentId}}</td>
-            <td>{{student.fio}}</td>
-            <td>{{student.workGroup}}</td>
-            <td>{{student.yearsOld}}</td>
-          </tr>
-          </tbody>
-        </table>
-      </ng-template>
-    </ngb-tab>
+      <ngb-tab id="tab-selectbyid3" title="{{'tabs.update' | translate}}">
+        <ng-template ngbTabContent>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Id</th>
+              <th>{{'student.fio' | translate}}</th>
+              <th>{{'student.workGroup' | translate}}</th>
+              <th>{{'student.yearsOld' | translate}}</th>
+              <th>{{'button.function' | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let student of students">
+              <td>{{student.studentId}}</td>
+              <td>{{student.fio}}</td>
+              <td>{{student.workGroup}}</td>
+              <td>{{student.yearsOld}}</td>
+              <td>
+                <button class="btn btn-primary btn-outline-secondary" (click)="loadUpdatedFields(student)">
+                  {{'button.update' | translate}}
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
 
-    <ngb-tab id="tab-selectbyid3" title="{{'tabs.update' | translate}}">
-      <ng-template ngbTabContent>
-        <div>
-          <ul>
-            <li *ngFor="let student of students" (click)="loadUpdatedFields(student)">
-              {{student.fio}}
-            </li>
-          </ul>
-        </div>
-
-        <fieldset [formGroup]="studentForm" [hidden]="updateFieldIsHidden">
-          <legend>Update student entity</legend>
-          <div class="form-group">
-            <label for="inputStudentFioUpd">{{'student.fio' | translate}}</label>
-            <input type="text" class="form-control" id="inputStudentFioUpd" formControlName="fio">
-          </div>
-          <div class="form-group">
-            <label for="inputWorkGroupUpd">{{'student.workGroup' | translate}}</label>
-            <input type="number" class="form-control" id="inputWorkGroupUpd" formControlName="workGroup">
-          </div>
-          <div class="form-group">
-            <label for="inputYearsOldUpd">{{'student.yearsOld' | translate}}</label>
-            <input type="number" class="form-control" id="inputYearsOldUpd" formControlName="yearsOld">
-          </div>
-          <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="prop()"
-                  ngbPopover="Entity are updated, please check" popoverTitle="Ok!">{{'button.update' | translate}}
+          <fieldset [formGroup]="studentForm" [hidden]="updateFieldIsHidden">
+            <legend>Update student entity</legend>
+            <div class="form-group">
+              <label for="inputStudentFioUpd">{{'student.fio' | translate}}</label>
+              <input type="text" class="form-control" id="inputStudentFioUpd" formControlName="fio">
+            </div>
+            <div class="form-group">
+              <label for="inputWorkGroupUpd">{{'student.workGroup' | translate}}</label>
+              <input type="number" class="form-control" id="inputWorkGroupUpd" formControlName="workGroup">
+            </div>
+            <div class="form-group">
+              <label for="inputYearsOldUpd">{{'student.yearsOld' | translate}}</label>
+              <input type="number" class="form-control" id="inputYearsOldUpd" formControlName="yearsOld">
+            </div>
+            <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="addUpdatedEntityToBase()"
+                    ngbPopover="" popoverTitle="Ok!">{{'button.update' | translate}}
+            </button>
+          </fieldset>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab id="tab-selectbyid4" title="{{'tabs.delete' | translate}}">
+        <ng-template ngbTabContent>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Id</th>
+              <th>{{'student.fio' | translate}}</th>
+              <th>{{'student.workGroup' | translate}}</th>
+              <th>{{'student.yearsOld' | translate}}</th>
+              <th>{{'button.function' | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let student of students">
+              <td>{{student.studentId}}</td>
+              <td>{{student.fio}}</td>
+              <td>{{student.workGroup}}</td>
+              <td>{{student.yearsOld}}</td>
+              <td>
+                <button class="btn btn-primary btn-outline-secondary" (click)="deleteStudentInBase(student)"
+                        ngbPopover="" popoverTitle="Ok!">{{'button.delete' | translate}}
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="updateReadForm()"
+                  ngbPopover="" popoverTitle="Ok!">{{'button.update' | translate}}
           </button>
-        </fieldset>
-      </ng-template>
-    </ngb-tab>
-
-    <ngb-tab id="tab-selectbyid4" title="{{'tabs.delete' | translate}}">
-      <ng-template ngbTabContent>
-        <div>
-          <ul>
-            <li *ngFor="let student of students | async" (click)="loadUpdatedFields(student)">
-              {{student.fio}}
-            </li>
-          </ul>
-        </div>
-      </ng-template>
-    </ngb-tab>
-
-  </ngb-tabset>
-</div>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
 </div>

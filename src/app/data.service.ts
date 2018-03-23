@@ -14,14 +14,21 @@ export class DataService {
   constructor(private http: HttpClient) {
   }
 
-  dataUrl = 'http://localhost:8090/student/getAllStudents';
   loginUrl = 'http://localhost:8090/login?username=vovk&password=11111&submit=Login';
 
-  getData() {
-    return this.http.get(this.dataUrl);
+  getData(dataUrl) {
+    return this.http.get(dataUrl);
   }
 
   loginPage() {
     return this.http.post(this.loginUrl, httpOptions);
+  }
+
+  addData(dataUrl, data){
+    return this.http.post(dataUrl, JSON.stringify(data), httpOptions);
+  }
+
+  deleteData(dataUrl, data){
+    return this.http.post(dataUrl, JSON.stringify(data), httpOptions);
   }
 }
