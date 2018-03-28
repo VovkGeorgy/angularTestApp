@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
 
@@ -16,12 +16,14 @@ import {DataService} from './data.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {LoginLogoutComponent} from './login-logout/login-logout.component';
 import {CarsComponent} from './cars/cars.component';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HomeComponent} from './home/home.component';
+import {APP_BASE_HREF} from '@angular/common';
 
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
     StudentsComponent,
@@ -44,7 +46,7 @@ import {HomeComponent} from './home/home.component';
       {path: 'login', component: LoginLogoutComponent},
       {path: 'cars', component: CarsComponent},
       {path: '**', component: NotFoundComponent},
-      //redirection: '/home....'; pathMatch: 'Full'
+      // redirection: '/home....'; pathMatch: 'Full'
     ]),
     ReactiveFormsModule,
     HttpClientModule,
@@ -56,7 +58,14 @@ import {HomeComponent} from './home/home.component';
       }
     })
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    TranslateService,
+    {
+      provide: APP_BASE_HREF,
+      useValue: '/'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -66,3 +75,7 @@ export class AppModule {
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
+
+// export function HttpLoaderFactory(httpClient: HttpClient) {
+//   return new TranslateHttpLoader(httpClient, );
+// }
