@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {DataService} from '../data.service';
+import {DataService} from '../service/data.service';
 
 @Component({
   selector: 'app-students',

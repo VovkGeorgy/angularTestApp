@@ -12,7 +12,7 @@ import {NavigateComponent} from './navigate/navigate.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TeachersComponent} from './teachers/teachers.component';
-import {DataService} from './data.service';
+import {DataService} from './service/data.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {LoginLogoutComponent} from './login-logout/login-logout.component';
 import {CarsComponent} from './cars/cars.component';

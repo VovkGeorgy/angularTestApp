@@ -9,7 +9,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
-import {DataService} from '../data.service';
+import {DataService} from '../service/data.service';
 import {APP_BASE_HREF} from '@angular/common';
 import {HttpLoaderFactory} from '../app.module';
 

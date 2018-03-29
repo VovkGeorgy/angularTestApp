@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {DataService} from '../data.service';
+import {DataService} from '../service/data.service';
 
 @Component({
   selector: 'app-login-logout',
@@ -12,15 +12,16 @@ export class LoginLogoutComponent implements OnInit {
     login: new FormControl(''),
     password: new FormControl(''),
   });
-  loginFormIsHidden = true;
 
   constructor(private dataservice: DataService) {
   }
+
+  loginUrl = 'http://localhost:8090/login?username=vovk&password=11111&submit=Login';
 
   ngOnInit() {
   }
 
   logIn() {
-    this.dataservice.loginPage();
+    this.dataservice.loginRequest(this.loginUrl);
   }
 }
