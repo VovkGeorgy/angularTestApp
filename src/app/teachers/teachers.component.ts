@@ -36,6 +36,7 @@ export class TeachersComponent implements OnInit {
   }
 
   updateEntity() {
+    this.updateFieldIsHidden = true;
     this.db.object('/teachers/' + this.tempTeacherKey)
       .set(this.teacherForm.getRawValue());
   }

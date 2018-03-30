@@ -4,7 +4,8 @@
     "add": "Add",
     "delete": "Delete",
     "login": "Login",
-    "update": "Update"
+    "update": "Update",
+    "save" : "Save"
   },
   "login-logout": {
     "title": "Login form",

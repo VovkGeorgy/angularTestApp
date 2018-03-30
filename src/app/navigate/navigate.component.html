@@ -1,11 +1,11 @@
 <p class="col-md-4">
   {{'navigate.title' | translate}}
 </p>
-<div class="btn-group col-md-10">
+<div id="navbar" class="btn-group col-md-10">
   <button type="button" class="btn btn-dark" routerLink="/students">{{'student.naming' | translate}}</button>
   <button type="button" class="btn btn-dark" routerLink="/teachers">{{'teacher.naming' | translate}}</button>
   <button type="button" class="btn btn-dark" routerLink="/cars">{{'car.naming' | translate}}</button>
 </div>
 <button type="button" class="btn btn-dark" routerLink="/login">{{'button.login' | translate}}</button>
-<button type="button" class="btn btn-dark" (click)="changeLanguage('ru')">RU</button>
+<button id="languageButtonRU" type="button" class="btn btn-dark" (click)="changeLanguage('ru')">RU</button>
 <button type="button" class="btn btn-dark" (click)="changeLanguage('en')">EN</button>

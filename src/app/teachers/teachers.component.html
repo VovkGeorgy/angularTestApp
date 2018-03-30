@@ -3,14 +3,14 @@
 <div class="row col-md-12">
   <div class="col-md-3"></div>
   <div class="col-md-6">
-    <ngb-tabset #t="ngbTabset">
+    <ngb-tabset #t="ngbTabset" id="createTabSet">
       <ngb-tab id="tab-selectbyid1" title="{{'tabs.create' | translate}}">
         <ng-template ngbTabContent>
           <fieldset [formGroup]="teacherForm">
             <legend>{{'teacher.title' | translate}}</legend>
             <div class="form-group">
               <label for="inputTeacherFio">{{'teacher.fio' | translate}}</label>
-              <input type="text" class="form-control" id="inputTeacherFio" placeholder="Ivanov I. I."
+              <input name="FIO" type="text" class="form-control" id="inputTeacherFio" placeholder="Ivanov I. I."
                      formControlName="fio">
             </div>
             <div class="form-group">
@@ -23,7 +23,8 @@
               <input type="number" class="form-control" id="inputStudentsNumber" placeholder="1-99"
                      formControlName="studentsNumber">
             </div>
-            <button class="btn btn-primary btn-outline-secondary" placement="right" (click)="fieldChecker()"
+            <button id="addButton" class="btn btn-primary btn-outline-secondary" placement="right"
+                    (click)="fieldChecker()"
                     ngbPopover="" popoverTitle="Ok!">{{'button.add' | translate}}
             </button>
           </fieldset>
@@ -68,13 +69,14 @@
               <td>{{teacher.experience}}</td>
               <td>{{teacher.studentsNumber}}</td>
               <td>
-                <button class="btn btn-primary btn-outline-secondary" (click)="loadUpdatedFields(teacher)">{{'button.update' | translate}}
+                <button class="btn btn-primary btn-outline-secondary" (click)="loadUpdatedFields(teacher)">
+                  {{'button.update' | translate}}
                 </button>
               </td>
             </tr>
             </tbody>
           </table>
-          <fieldset [formGroup]="teacherForm">
+          <fieldset [formGroup]="teacherForm" [hidden] = "updateFieldIsHidden">
             <legend></legend>
             <div class="form-group">
               <label for="updateTeacherFio">{{'teacher.fio' | translate}}</label>
@@ -91,7 +93,8 @@
               <input type="number" class="form-control" id="updateStudentsNumber" placeholder="1-99"
                      formControlName="studentsNumber">
             </div>
-            <button class="btn btn-primary btn-outline-secondary" (click)="updateEntity()">{{'button.update' | translate}}
+            <button class="btn btn-primary btn-outline-secondary" (click)="updateEntity()">{{'button.save' |
+              translate}}
             </button>
           </fieldset>
         </ng-template>
